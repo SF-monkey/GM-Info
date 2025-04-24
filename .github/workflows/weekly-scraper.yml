@@ -28,7 +28,7 @@ jobs:
           python scraper.py
 
       - name: Upload PDFs
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: downloaded-pdfs
           path: 'pdfs/*.pdf'

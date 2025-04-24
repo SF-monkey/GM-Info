@@ -8,10 +8,15 @@ on:
 jobs:
   run-scraper:
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write  # 确保有写入权限
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # 获取完整git历史
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -22,9 +27,11 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Create PDFs directory if not exists
+        run: mkdir -p pdfs
+
       - name: Run scraper
-        run: |
-          python scraper.py
+        run: python scraper.py
 
       - name: Configure Git
         run: |

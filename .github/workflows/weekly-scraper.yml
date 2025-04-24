@@ -1,8 +1,9 @@
-name: Weekly PDF Scraper
+name: Biweekly PDF Scraper
 
 on:
   schedule:
-    - cron: '0 8 * * 1'  # 每周一 08:00 UTC
+    # 每周一 08:00 UTC，但只在偶数周运行（0 表示周日，1 表示周一）
+    - cron: '0 8 * * 1/2'  # 每两周的周一运行
   workflow_dispatch:
 
 jobs:
@@ -10,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     
     permissions:
-      contents: write  # 确保有写入权限
+      contents: write
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0  # 获取完整git历史
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -41,7 +42,7 @@ jobs:
       - name: Commit and push downloaded PDFs
         run: |
           git add pdfs/*.pdf || echo "No new PDFs to add"
-          git commit -m "Add new PDFs from weekly scraper run" || echo "Nothing to commit"
+          git commit -m "Add new PDFs from biweekly scraper run" || echo "Nothing to commit"
           git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

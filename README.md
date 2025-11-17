@@ -11,7 +11,7 @@ GM-Info/
 │   └── workflows/
 │       └── weekly-scraper.yml   <-- GitHub Actions脚本
 ├── pdfs/                        <-- GM规划备案公示PDF文件
-├── scraper.py                   <-- 爬虫脚本
+├── scraper.py                   <-- 脚本
 ├── requirements.txt             <-- 依赖包列表
 └── README.md
 ```

@@ -10,7 +10,7 @@ GM-Info/
 ├── .github/
 │   └── workflows/
 │       └── weekly-scraper.yml   <-- GitHub Actions脚本
-├── pdfs/                        <-- 国漫规划备案公示PDF文件
+├── pdfs/                        <-- GM规划备案公示PDF文件
 ├── scraper.py                   <-- 爬虫脚本
 ├── requirements.txt             <-- 依赖包列表
 └── README.md
